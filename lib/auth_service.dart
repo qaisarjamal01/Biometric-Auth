@@ -15,13 +15,13 @@ class AuthService {
         options: AuthenticationOptions(
           stickyAuth: true,
           useErrorDialogs: true,
-
         )
       );
     } on PlatformException catch (e) {
-      if (e.code == auth_error.notAvailable) {
+      if (e.code == auth_error.notEnrolled) {
         // Add handling of no hardware here.
-      } else if (e.code == auth_error.notEnrolled) {
+      } else if (e.code == auth_error.lockedOut ||
+          e.code == auth_error.permanentlyLockedOut) {
         // ...
       } else {
         // ...

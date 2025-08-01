@@ -21,7 +21,7 @@ class _AuthPageState extends State<AuthPage> {
   void authCheck() async{
     bool check = await AuthService().authenticateLocally();
     if(check) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
 
